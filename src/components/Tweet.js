@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { formatTweet, formatDate } from "../utils/helpers";
 import { Link, withRouter } from "react-router-dom";
 
-//importing icons from react-icons
 import { TiArrowBackOutline } from "react-icons/ti";
 import { TiHeartOutline } from "react-icons/ti";
 import { TiHeartFullOutline } from "react-icons/ti";
@@ -22,7 +21,6 @@ class Tweet extends Component {
 
     const { dispatch, tweet, authedUser } = this.props;
 
-    //dispatching the action creator
     dispatch(
       handleToggleTweet({
         id: tweet.id,
@@ -75,7 +73,7 @@ class Tweet extends Component {
 
           <div className="tweet-icons">
             <TiArrowBackOutline className="tweet-icon" />
-            {/* show number only if it's not zero */}
+            {}
             <span>{replies !== 0 && replies} </span>
             <button className="heart-button" onClick={this.handleLike}>
               {hasLiked === true ? (
@@ -92,10 +90,9 @@ class Tweet extends Component {
   }
 }
 
-//id comes from the props passed by a parent component
 function mapStateToProps({ authedUser, users, tweets }, { id }) {
-  const tweet = tweets[id]; //getting the specific tweet by its id
-  const parentTweet = tweet ? tweets[tweet.replyingTo] : null; //check if the specific tweet is a reply to another one. If so, get information about that parent tweet
+  const tweet = tweets[id]; 
+  const parentTweet = tweet ? tweets[tweet.replyingTo] : null; 
 
   return {
     authedUser,
@@ -105,5 +102,4 @@ function mapStateToProps({ authedUser, users, tweets }, { id }) {
   };
 }
 
-//using withRouter because this component is not being rendered by react router, so to have access to history props, we need to use withRouter
 export default withRouter(connect(mapStateToProps)(Tweet));

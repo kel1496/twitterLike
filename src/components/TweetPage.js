@@ -11,7 +11,7 @@ class TweetPage extends Component {
     return (
       <div>
         <Tweet id={id} />
-        {/* passing the parent tweet id */}
+        {}
         <NewTweet id={id} />
 
         {replies.length !== 0 && <h3 className="center">Replies</h3>}
@@ -33,7 +33,7 @@ function mapStateToProps({ authedUser, tweets, users }, props) {
   return {
     id,
     replies: !tweets[id]
-      ? [] //if doesn't exist a tweet with this id, the reply will be an empty array
+      ? [] 
       : tweets[id].replies.sort(
           (a, b) => tweets[b].timestamp - tweets[a].timestamp
         )

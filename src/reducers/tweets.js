@@ -9,14 +9,14 @@ export default function tweets(state = {}, action) {
       };
 
     case ADD_TWEET:
-      const { tweet } = action; //getting the newly added tweet from action
+      const { tweet } = action;
 
       let replyingTo = {};
       if (tweet.replyingTo !== null) {
         replyingTo = {
           [tweet.replyingTo]: {
-            //id of the tweet we are replying to
-            ...state[tweet.replyingTo], //everything that was before
+            
+            ...state[tweet.replyingTo],
             replies: state[tweet.replyingTo].replies.concat([tweet.id])
           }
         };
@@ -35,7 +35,7 @@ export default function tweets(state = {}, action) {
           ...state[action.id],
           likes:
             action.hasLiked === true
-              ? state[action.id].likes.filter(uid => uid !== action.authedUser) //if has liked, remove it (dislike it)
+              ? state[action.id].likes.filter(uid => uid !== action.authedUser) 
               : state[action.id].likes.concat([action.authedUser])
         }
       };

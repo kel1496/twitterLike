@@ -6,9 +6,8 @@ import App from "./components/App";
 //store stuff
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import reducer from "./reducers"; //importing the default export from index inside reducers folder
+import reducer from "./reducers"; 
 
-//importing middlewares
 import middleware from "./middleware";
 
 const store = createStore(reducer, middleware);

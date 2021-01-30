@@ -12,7 +12,7 @@ class Dashboard extends Component {
         <ul className="dashbord-list">
           {this.props.tweetsIds.map(id => (
             <li key={id}>
-              {/* <div>TWEET ID: {id} </div> */}
+              {}
               <Tweet id={id} />
             </li>
           ))}
@@ -22,12 +22,9 @@ class Dashboard extends Component {
   }
 }
 
-//destructuring tweets from state
 function mapStateToProps({ tweets }) {
   return {
     tweetsIds: Object.keys(tweets).sort(
-      //sorting from the newest to the oldest tweet
-      //If compareFunction(a, b) is greater than 0, sort b to an index lower than a, i.e. b comes first.
       (a, b) => tweets[b].timestamp - tweets[a].timestamp
     )
   };

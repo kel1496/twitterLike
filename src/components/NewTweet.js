@@ -22,18 +22,14 @@ class NewTweet extends Component {
     e.preventDefault();
     const { text } = this.state;
 
-    //if we are at route /new, there is no id, so we are not replying to any tweet
-    //if we are at route /tweet/:id, we are replying to that id
-    const { dispatch, id } = this.props; //if id is a thing, it means we are replying to this id
+    const { dispatch, id } = this.props; 
 
-    //todo: Add tweet to store
     dispatch(handleAddTweet(text, id));
-    // console.log("New Tweet: ", text);
+    console.log("New Tweet: ", text);
 
-    //reset state to default
     this.setState(() => ({
       text: "",
-      toHome: id ? false : true //if id is a thing, do not redirect, otherwise, you are at /new, so, after submit, redirect back to home
+      toHome: id ? false : true 
     }));
   };
 
@@ -41,7 +37,6 @@ class NewTweet extends Component {
     const { text, toHome } = this.state;
     const tweetLeft = 280 - text.length;
 
-    // redirect to home view if submitted from /new
     if (toHome === true) {
       return <Redirect to="/" />;
     }
@@ -57,10 +52,10 @@ class NewTweet extends Component {
             className="textarea"
             maxLength={280}
           />
-          {/* show how many characters are left */}
+          {}
           {tweetLeft <= 100 && <div className="tweet-length">{tweetLeft}</div>}
 
-          {/* button is disabled if it's an empty string */}
+          {}
           <button className="btn" type="submit" disabled={text === ""}>
             Submit
           </button>
